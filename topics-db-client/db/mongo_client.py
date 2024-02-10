@@ -1,5 +1,6 @@
 import pymongo
 from typing import List, Dict, Union
+from itertools import chain
 
 
 MONGO_HOST = "mongodb+srv://amitrechavia:ThisIsNotMyPassword@clusterforbigdatacourse.l0dbxko.mongodb.net/?retryWrites=true&w=majority"
@@ -51,7 +52,7 @@ def get_tweets(topics: Union[List[str], str]) -> Dict[str, List[str]]:
 
 
 def get_all_topics() -> List[str]:
-    return list({user.get('topics') for user in users_collection.find()})
+    return list(set(chain.from_iterable([user.get('topics') for user in users_collection.find()])))
 
 
 def get_all_users() -> List[str]:
