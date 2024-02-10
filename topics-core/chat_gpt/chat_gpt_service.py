@@ -4,7 +4,7 @@ import requests as requests
 
 TIMEOUT = 5000
 URL = 'https://api.openai.com/v1/chat/completions'
-TOKEN = "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"
+TOKEN = "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"
 HEADERS = {"Content-Type": "application/json",
            "Authorization": f"Bearer {TOKEN}"}
 CHAT_GPT_VERSION = "gpt-3.5-turbo"
