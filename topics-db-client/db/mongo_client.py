@@ -1,11 +1,9 @@
-import ssl
-
 import pymongo
 from typing import List, Dict, Union
 from itertools import chain
 
 MONGO_HOST = "mongodb+srv://amitrechavia:ThisIsNotMyPassword@clusterforbigdatacourse.l0dbxko.mongodb.net/?retryWrites=true&w=majority"
-client = pymongo.MongoClient(MONGO_HOST, ssl_cert_reqs=ssl.CERT_NONE)
+client = pymongo.MongoClient(MONGO_HOST)
 db = client['db']
 tweets_collection = db['tweets']
 users_collection = db['users']
