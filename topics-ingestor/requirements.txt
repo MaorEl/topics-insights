@@ -1,2 +1,3 @@
 flask==3.0.2
+git+https://github.com/MaorEl/topics-insights.git@add_setup#subdirectory=topics-db-client
 
