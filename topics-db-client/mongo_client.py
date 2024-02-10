@@ -48,3 +48,19 @@ def get_tweets(topics: Union[List[str], str]) -> Dict[str, List[str]]:
     if isinstance(topics, str):
         topics = [topics]
     return {topic: tweets_collection.find_one({"topic": topic}).get('tweets') for topic in topics}
+
+
+def get_all_topics() -> List[str]:
+    """
+    get all the topics in the database
+    :return: A list of all the topics in the database
+    """
+    return list({user.get('topics') for user in users_collection.find()})
+
+
+def get_all_users() -> List[str]:
+    """
+    get all the users in the database
+    :return: A list of all the users in the database
+    """
+    return [user.get('user_id') for user in users_collection.find()]
