@@ -14,7 +14,7 @@ tweeter_gateway = TweeterGateway()
 def search(topic):
     logging.info(f'Searching for tweets about: {topic}')
     search_results = tweeter_gateway.search(topic)
-    return str(search_results)
+    return search_results
 
 
 if __name__ == '__main__':
