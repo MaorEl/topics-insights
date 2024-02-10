@@ -1,0 +1,39 @@
+Agent: Thank you for calling [ORG]
+Customer: Hi good afternoon. I was calling because a while we were on our family vacation trip
+Agent: Okay so what questions did you have what do you need help with.
+Customer: I need to submit a claim.
+Agent: Okay so all claims are.
+Customer: I need to get reimbursed so I I'm sorry.
+Agent: All claims are filed online I can give you the website when you're ready.
+Customer: Okay so I don't call then everything has to be online.
+Agent: Correct we don't do claims over the phone.
+Customer: Okay yeah 'cause apparently right now nobody can even find me in the system.
+Agent: Find you in who system.
+Customer: So because I just side also. I'm sorry.
+Agent: Find you in who system.
+Customer: Uh the [ORG] [PRODUCT].
+Agent: This is [ORG] you called our [ORG] to see if we can find you in our system.
+Customer: Uh yeah I called and I just I've spoken to two different operators and both of them are not able to pull up my my my full name or my reservation number or any of that so they keep transferring me.
+Agent: Okay who do you book your trip through.
+Customer: [ORG].
+Agent: Okay and did you have a booking number.
+Customer: I only have a reservation number.
+Agent: Hey what's that number.
+Customer: It's gonna be [NUMBER].
+Agent: What's your first and last name.
+Customer: Huh and my family inter.
+Agent: Can you spell that please.
+Customer: [ALPHA][NAME] [ALPHA].
+Agent: Yeah you're not in the system but that's not uncommon for [ORG] it normally takes a while for the for you guys to populate in our system but as long as you have a reservation number or some kind of booking number the one that you just gave me you're still fine to file a claim.
+Customer: Okay so go online then to book the claim.
+Agent: Yes I can give you the website when you're ready.
+Customer: Okay one second.
+Agent: Huh. Good.
+Customer: Sorry about that go ahead what is it.
+Agent: It's [NAME].
+Customer: Is it. Okay.
+Agent: [WEBSITE].
+Customer: Okay so just wondering I just follow the. And it should be pretty mandatory.
+Agent: Yes it's pretty straightforward you would fill out the if this is for your medical expenses. You're gonna fill out the medical expense claim form in its entirety.
+Customer: Okay sounds good thank you so much appreciate it.
+Agent: You're welcome have a good 1.
