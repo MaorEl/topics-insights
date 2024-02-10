@@ -30,8 +30,8 @@ class DataIngestor:
                     logging.info(f'No tweets for topic: {topic}')
                     continue
                 else:
-                    # todo maor - parse tweets somehow
-                    self.db_client.save_tweets(topic, str(tweets))
+                    dict_tweets = {topic: tweets}
+                    self.db_client.save_tweets(dict_tweets)
                     logging.info(f'Ingested {len(tweets)} tweets for topic: {topic}')
             except Exception as e:
                 logging.error(f'Error while ingesting tweets for topic: {topic}. Error: {e}')
