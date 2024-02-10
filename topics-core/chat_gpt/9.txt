@@ -1,0 +1,84 @@
+Agent: Thank you for calling [ORG] may I have your driver number please. Bye.
+Customer: [NUMBER].
+Agent: And that would be [NUMBER].
+Customer: Yes.
+Agent: Okay just give me a few minutes and I can bring it up for you. Can I get a good call back number for you.
+Customer: [NUMBER].
+Agent: Of [NUMBER] and that the three middle number was six I mean [NUMBER].
+Customer: Yes.
+Agent: Okay okay and how may I assist you today.
+Customer: On my tablet when I put in a for updating my fuel.
+Agent: Okay.
+Customer: It has not been giving me a fuel stop.
+Agent: It's. Not giving you a full a fuel stop. Is this a yes started today.
+Customer: Right. No it's it's been going on this whole week.
+Agent: Okay. Let's see here.
+Customer: So I've been feeling at the pilot in [LOCATION].
+Agent: Okay let me see what I can. Do for you.
+Customer: Huh.
+Agent: So you have not been receiving no fuel solution. At all.
+Customer: Correct all week.
+Agent: Okay I'll wait yes now let me see here what this says I can. Kept you out let me see here. Is want me to ask you is the driver pump for for a fuel level went accepting and activating the assignment.
+Customer: Yeah yeah.
+Agent: Okay okay. Is the driver using.
+Customer: Yeah 'cause I I go from [LOCATION] to [LOCATION] everyday when I get down to [LOCATION] that's when I update my fuel system or fuel level.
+Agent: Okay. Huh.
+Customer: And I take my 30 minute breakdown there 'cause we're dropping and hooking and you know doing the pre pre trip on everything and it has not given me a fuel stop.
+Agent: Yes ma'am. You know. Yes ma'am. Okay it said.
+Customer: And I'm still on duty because it won't do it when I'm off duty.
+Agent: Okay are you using.
+Customer: Or it doesn't like it when I'm off duty.
+Agent: Are you using the dispatch button. It asked it's asking me to ask you a are you using the dispatch button.
+Customer: No it's on my work assignment.
+Agent: Okay it said if not why okay you said it's on your work assignment so it's told me to gather the shipment id and search for the shipment do you have the.
+Customer: Yeah.
+Agent: A shipment id number that you're working on now.
+Customer: Well I'm not I'm not on my I'm not working right now 'cause I'm still on my 10 hours.
+Agent: Oh okay. Okay.
+Customer: I don't normally start until [NUMBER] o'clock.
+Agent: Okay. Let me ask my leave because. I without me having the shipment number I don't know how further now I can go but let me ask my leave. About the situation and then I'll see what she says just give me a few minutes yes ma'am.
+Customer: Okay. Okay.
+Agent: Okay thank you.
+Customer: Thank you.
+Agent: Yes ma'am you're welcome.
+Customer: Hey.
+Agent: I'm still here with you I'm just writing everything you're telling me so I am telling her now.
+Customer: Okay.
+Agent: Yes ma'am. Okay I'm just waiting for someone to respond to me.
+Customer: Okay.
+Agent: Yes ma'am thank you.
+Customer: You're welcome.
+Agent: Yes ma'am. She said does does you have do you have a previous ticket per chance for a past load with this issue.
+Customer: Yeah. Yeah I can give you like the S T number.
+Agent: Okay do you have a ticket do you have a ticket number that you have called in on before with the same issue.
+Customer: No no this is the first time I've called in.
+Agent: Okay let me let her know that. Okay and you said you had A S T number.
+Customer: Yeah yeah I can give you an F T number.
+Agent: Just a minute. Okay.
+Customer: Huh last night was S T.
+Agent: K.
+Customer: [NUMBER].
+Agent: Yes ma'am. Okay and that number is [NUMBER].
+Customer: Yes.
+Agent: Okay and that was your last night load.
+Customer: Correct.
+Agent: Yes ma'am okay. Let me see a. If I can go in and see what it's saying what kind of information that I might can get. Okay she said that. That I can. Escalate the problem 'cause she said that she believed that is happening with area your air load and so it's gonna have to be escalated to my next level up and then they will take care of the situation.
+Customer: Okay.
+Agent: I'm I'm gonna give you a ticket number so you can call back with. Because it's like. The first a couple of days. I mean uh you can call back tomorrow because I'm sure that someone when I send it up someone be assigned to it so I'm gonna give you your ticket number so when you call back you can refer to it and then they can go into detail of what the other person next to me will do for you and.
+Customer: Okay okay.
+Agent: Yes ma'am and your ticket number is [NUMBER].
+Customer: Okay.
+Agent: 37
+Customer: I'm sorry [NUMBER].
+Agent: Yes ma'am [NUMBER].
+Customer: 37 okay.
+Agent: Yes ma'am and you just call back with this and then they will will let you know you know that someone's done done assigned to it and that the problem is fixed and everything and so just try to you know if you can call back in the morning.
+Customer: Okay.
+Agent: Yes ma'am I'm sorry sorry I couldn't fix it for you but this is something that is out of my hands with you know I don't have the. The K for this but it will be fixed for you.
+Customer: Okay yeah 'cause I just thought it was pretty weird and it's like how can I get my fuel compliance when it's not giving me a fuel stop.
+Agent: Yes ma'am. Right right and and then you're saying it's doing it to you all week so you're something is definitely wrong with that so hopefully that they can get it fixed for you you'll be back on the road.
+Customer: Oh. Okay. Alright sounds good.
+Agent: Yes ma'am and you continue to have a blessed day.
+Customer: You too.
+Agent: Yes ma'am be safe out there.
+Customer: Huh. Alright bye.
