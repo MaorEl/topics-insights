@@ -15,13 +15,12 @@ def ingest_tweets():
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(ingest_tweets, 'interval', minutes=1)
+scheduler.add_job(ingest_tweets, 'interval', seconds=300)
 scheduler.start()
 
 
 @app.route('/')
 def hello_world():
-    ingest_tweets()
     return 'I am topics ingestor and I will ingest more tweets for all of our customers every 5 minutes!'
 
 
