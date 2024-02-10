@@ -12,6 +12,11 @@ class DataIngestor:
         self.ingestor_repo = IngestorRepository()
 
     def ingest_tweets(self):
+        import certifi
+
+        # self.db_client.sign_up('Maor', ['Cristiano', 'Israel', 'Covid-19'])
+        # self.db_client.sign_up('Coca Cola', ['Coca Cola', 'Pepsi', 'RC Cola'])
+
         logging.info('Ingesting tweets from Twitter...')
         topics = self.db_client.get_all_topics()
 
@@ -19,7 +24,6 @@ class DataIngestor:
             logging.warning('No topics to ingest tweets for')
             return
 
-        # topics = ['covid', 'vaccine', 'Ronaldo', 'Maor', 'Israel']
         logging.info('Handling topics: {}'.format(topics))
 
         for topic in topics:

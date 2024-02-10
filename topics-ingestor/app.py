@@ -11,7 +11,7 @@ data_ingestor = DataIngestor()
 
 
 def ingest_tweets():
-    DataIngestor().ingest_tweets()
+    data_ingestor.ingest_tweets()
 
 
 scheduler = BackgroundScheduler()
@@ -20,7 +20,8 @@ scheduler.start()
 
 
 @app.route('/')
-def hello_world():  # put application's code here
+def hello_world():
+    ingest_tweets()
     return 'I am topics ingestor and I will ingest more tweets for all of our customers every 5 minutes!'
 
 
