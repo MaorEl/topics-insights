@@ -1,6 +1,6 @@
 how to install?
 execute:
-pip install git+https://github.com/MaorEl/topics-insights.git@add_setup#subdirectory=topics-db-client 
+pip install git+https://github.com/MaorEl/topics-insights.git@master#subdirectory=topics-db-client 
 
 how to use?
 from your .py file do:
