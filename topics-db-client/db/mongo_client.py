@@ -1,5 +1,6 @@
 import pymongo
 from typing import List, Dict, Union
+from itertools import chain
 
 
 MONGO_HOST = "mongodb+srv://amitrechavia:ThisIsNotMyPassword@clusterforbigdatacourse.l0dbxko.mongodb.net/?retryWrites=true&w=majority"
@@ -48,3 +49,11 @@ def get_tweets(topics: Union[List[str], str]) -> Dict[str, List[str]]:
     if isinstance(topics, str):
         topics = [topics]
     return {topic: tweets_collection.find_one({"topic": topic}).get('tweets') for topic in topics}
+
+
+def get_all_topics() -> List[str]:
+    return list(set(chain.from_iterable([user.get('topics') for user in users_collection.find()])))
+
+
+def get_all_users() -> List[str]:
+    return [user.get('user_id') for user in users_collection.find()]
