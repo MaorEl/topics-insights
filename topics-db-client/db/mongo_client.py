@@ -7,6 +7,25 @@ client = pymongo.MongoClient(MONGO_HOST)
 db = client['db']
 tweets_collection = db['tweets']
 users_collection = db['users']
+insights_collection = db['insights']
+
+
+def save_insights(topic, insight) -> None:
+    """
+    save the insights into the database for the given topic
+    """
+    insights_collection.update_one(
+        {"topic": topic},
+        {"$push": {"insights": {"$each": insight}}},
+        upsert=True
+    )
+
+
+def get_insights(topic) -> List[str]:
+    """
+    get the insights for the given topic
+    """
+    return insights_collection.find_one({"topic": topic}).get('insights')
 
 
 def sign_up(user_id: str, topics: List[str]) -> None:
@@ -56,3 +75,4 @@ def get_all_topics() -> List[str]:
 
 def get_all_users() -> List[str]:
     return [user.get('user_id') for user in users_collection.find()]
+
