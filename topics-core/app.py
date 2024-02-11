@@ -12,7 +12,7 @@ app = Flask(__name__)
 def sign_up():
     """
     sign up a new user with the given topics
-    call /analyze?signUp=user_id&topics=topic1,topic2,topic3
+    call /signUp?user_id=my_user_id&topics=topic1,topic2,topic3
     """
     args = request.args
     user_id = args.get('user_id')
@@ -20,7 +20,7 @@ def sign_up():
     mongo_client.sign_up(user_id, topics)
 
 
-def find_number_from_text(text: str) -> int:
+def _find_number_from_text(text: str) -> int:
     """
     find the first number from the given text, if no number is found, return 1
     """
@@ -42,20 +42,19 @@ def analyze():
     """
     topic = request.args.get('topic')
     tweets_for_topic = mongo_client.get_tweets(topic)[topic]
-    rate = find_number_from_text(openai.ChatCompletion.create(
+    rate = _find_number_from_text(openai.ChatCompletion.create(
         engine="gpt-3.5-turbo",
-        messages=f"give a number between 1 and 10 which "
-                 f"describes what is the excitement level of people acordding to the tweets {tweets_for_topic}?"
-                 f"please return just a number and nothing else",
+        messages=f"Give a number between 1 and 10 to describe the excitement level of people according to the tweets "
+                 f"{tweets_for_topic}. Please return only a number and nothing else.",
         temperature=0.0).choices[0].message['content'])
-    mongo_client.save_insights(topic, rate)
-    return f"the satisfaction of the people about the tweets {tweets_for_topic} is {rate}"
+    mongo_client.save_tweet_rate(topic, rate)
+    return f"The level of excitement in the tweets {tweets_for_topic} is {rate}"
 
 
 @app.route('/visualize')
 def visualize():
     """
-    visualize the insights for the given topic
+    visualize the level of excitement for the tweets of the given topic
     the X axis is the tweet number and the Y axis is the insight satisfaction
     call /visualize?topic=topic_name
     if you want to see the graph in your machine, save the returned values as var named 'data' and run the following code:
@@ -73,7 +72,7 @@ def visualize():
 
     """
     topic = request.args.get('topic')
-    insights = mongo_client.get_insights(topic)
+    insights = mongo_client.get_tweets_rates(topic)
     x_values = range(1, len(insights) + 1)  # Generate x values from 1 to length of the list
     plt.plot(x_values, insights, marker='o', linestyle='-')
     plt.xlabel('tweet number')
