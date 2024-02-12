@@ -4,10 +4,7 @@ from db import mongo_client
 import matplotlib.pyplot as plt
 import numpy as np
 
-secret_key_part1 = "sk-yQ3l"
-secret_key_part2 = "nc59ENHP1tJl9vPiT3BlbkFJ"
-secret_key_part3 = "JgcVWjE4Zi79OZjX4Kwm"
-openai.api_key = secret_key_part1 + secret_key_part2 + secret_key_part3
+openai.api_key = "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"
 app = Flask(__name__)
 
 
@@ -46,11 +43,11 @@ def analyze():
     """
     topic = request.args['topic']
     tweets_for_topic = mongo_client.get_tweets(topic)[topic]
-    rate = _find_number_from_text(openai.ChatCompletion.create(
-        engine="gpt-3.5-turbo",
-        messages=f"Give a number between 1 and 10 to describe the excitement level of people according to the tweets "
-                 f"{tweets_for_topic}. Please return only a number and nothing else.",
-        temperature=0.0).choices[0].message['content'])
+    prompt = f"Give a number between 1 and 10 to describe the excitement level of people according to the tweets {tweets_for_topic}. Please return only a number and nothing else."
+    rate = _find_number_from_text(openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.0).choices[0].message.content)
     mongo_client.save_tweet_rate(topic, rate)
     return f"The level of excitement in the tweets {tweets_for_topic} is {rate}"
 
