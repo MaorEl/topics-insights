@@ -18,8 +18,8 @@ def sign_up():
     call /signUp?user_id=my_user_id&topics=topic1,topic2,topic3
     """
     args = request.args
-    user_id = args.get('user_id')
-    topics = args.get('topics').split(',')
+    user_id = args['user_id']
+    topics = args['topics'].split(',')
     mongo_client.sign_up(user_id, topics)
     return f"user {user_id} starting to follow topics {topics}"
 
@@ -44,7 +44,7 @@ def analyze():
     analyize the given topic,
     call /analyze?topic=topic_name
     """
-    topic = request.args.get('topic')
+    topic = request.args['topic']
     tweets_for_topic = mongo_client.get_tweets(topic)[topic]
     rate = _find_number_from_text(openai.ChatCompletion.create(
         engine="gpt-3.5-turbo",
@@ -75,7 +75,7 @@ def visualize():
 
 
     """
-    topic = request.args.get('topic')
+    topic = request.args['topic']
     insights = mongo_client.get_tweets_rates(topic)
     x_values = range(1, len(insights) + 1)  # Generate x values from 1 to length of the list
     plt.plot(x_values, insights, marker='o', linestyle='-')
