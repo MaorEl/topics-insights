@@ -8,8 +8,8 @@ import json
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-
-openai.api_key = "I4smGuYarso2W7nt0ae2JFkblB3T0Wz4uC2oxfcnZZH9IovW-ks"[::-1]
+import os
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 app = Flask(__name__)
 
 
