@@ -1,8 +1,13 @@
 import openai
 from flask import Flask, request
 from db import mongo_client
-import matplotlib.pyplot as plt
 import numpy as np
+import json
+
+# https://stackoverflow.com/questions/73745245/error-using-matplotlib-in-pycharm-has-no-attribute-figurecanvas
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
 
 openai.api_key = "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"
 app = Flask(__name__)
@@ -62,7 +67,7 @@ def visualize():
 
     import pandas as pd
     import matplotlib.pyplot as plt
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(json.loads(data))
     plt.plot(df['X'], df['Y'])
     plt.xlabel('tweet number')
     plt.ylabel('insight satisfaction')
@@ -81,8 +86,10 @@ def visualize():
     plt.title('tweet to satisfaction graph')
     plt.grid(True)
     plt.xticks(np.arange(min(x_values), max(x_values) + 1, 1))
-    plt.show()
-    return {"x": x_values, "y": insights}
+    plt.show(block=False)
+    plt.pause(2)
+    plt.close()
+    return json.dumps({"x": list(x_values), "y": insights})
 
 
 if __name__ == '__main__':
