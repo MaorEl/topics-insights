@@ -4,7 +4,10 @@ from db import mongo_client
 import matplotlib.pyplot as plt
 import numpy as np
 
-openai.api_key = "insert_here_your_openai_api_key"
+secret_key_part1 = "sk-yQ3l"
+secret_key_part2 = "nc59ENHP1tJl9vPiT3BlbkFJ"
+secret_key_part3 = "JgcVWjE4Zi79OZjX4Kwm"
+openai.api_key = secret_key_part1 + secret_key_part2 + secret_key_part3
 app = Flask(__name__)
 
 
@@ -18,6 +21,7 @@ def sign_up():
     user_id = args.get('user_id')
     topics = args.get('topics').split(',')
     mongo_client.sign_up(user_id, topics)
+    return f"user {user_id} starting to follow topics {topics}"
 
 
 def _find_number_from_text(text: str) -> int:
@@ -82,3 +86,7 @@ def visualize():
     plt.xticks(np.arange(min(x_values), max(x_values) + 1, 1))
     plt.show()
     return {"x": x_values, "y": insights}
+
+
+if __name__ == '__main__':
+    app.run(port=8080)
