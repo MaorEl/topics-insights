@@ -16,7 +16,7 @@ def save_tweet_rate(topic, rate) -> None:
     """
     tweets_rates_collection.update_one(
         {"topic": topic},
-        {"$push": {"rates": {"$each": rate}}},
+        {"$push": {"rates": {"$each": [rate]}}},
         upsert=True
     )
 
