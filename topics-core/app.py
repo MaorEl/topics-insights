@@ -9,7 +9,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
-openai.api_key = "sk-OcnrY#mMF#G7QQDO#o39ioO#T3Blbk#FJLn0#XuZxD1#kW7KM#PyvMls".replace('#', '')
+openai.api_key = "I4smGuYarso2W7nt0ae2JFkblB3T0Wz4uC2oxfcnZZH9IovW-ks"[::-1]
 app = Flask(__name__)
 
 
