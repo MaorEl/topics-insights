@@ -7,10 +7,16 @@ import json
 # https://stackoverflow.com/questions/73745245/error-using-matplotlib-in-pycharm-has-no-attribute-figurecanvas
 import matplotlib
 matplotlib.use('TkAgg')
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import os
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 app = Flask(__name__)
+
+
+@app.errorhandler(ValueError)
+def handle_value_error(e):
+    return f'Error occurred: {str(e)}', 500
 
 
 @app.route('/signUp')
@@ -53,6 +59,10 @@ def analyze():
         return f"No tweets for topic {topic}"
 
     tweets_for_topic = tweets[topic]
+
+    if not tweets_for_topic:
+        return f"No tweets for topic {topic}"
+
     prompt = f"Give a number between 1 and 10 to describe the excitement level of people according to the tweets {tweets_for_topic}. Please return only a number and nothing else."
     rate = _find_number_from_text(openai.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -88,17 +98,21 @@ def visualize():
     if insights is None:
         return f"No insights for topic {topic}"
 
-    x_values = range(1, len(insights) + 1)  # Generate x values from 1 to length of the list
-    plt.plot(x_values, insights, marker='o', linestyle='-')
-    plt.xlabel('tweet number')
-    plt.ylabel('insight satisfaction')
-    plt.title('tweet to satisfaction graph')
-    plt.grid(True)
-    plt.xticks(np.arange(min(x_values), max(x_values) + 1, 1))
-    plt.show(block=False)
-    plt.pause(2)
-    plt.close()
-    return json.dumps({"x": list(x_values), "y": insights})
+    try:
+        x_values = range(1, len(insights) + 1)  # Generate x values from 1 to length of the list
+        plt.plot(x_values, insights, marker='o', linestyle='-')
+        plt.xlabel('tweet number')
+        plt.ylabel('insight satisfaction')
+        plt.title('tweet to satisfaction graph')
+        plt.grid(True)
+        plt.xticks(np.arange(min(x_values), max(x_values) + 1, 1))
+        plt.show(block=False)
+        plt.pause(2)
+        plt.close()
+        return json.dumps({"x": list(x_values), "y": insights})
+    except Exception as e:
+        return f"Error occurred: {str(e)}"
+
 
 
 if __name__ == '__main__':
