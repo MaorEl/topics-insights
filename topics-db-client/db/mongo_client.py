@@ -43,14 +43,14 @@ def sign_up(user_id: str, topics: List[str]) -> None:
     )
 
 
-def save_tweets(topcis_tweets: Dict[str, List[str]]) -> None:
+def save_tweets(tweets_by_topic: Dict[str, List[str]]) -> None:
     """
     save the tweets into the database
     if the topic already exists, append the new tweets to the existing ones
-    :param topcis_tweets: A dictionary of key-value pairs where the key is the topic and the value is the tweets
+    :param tweets_by_topic: A dictionary of key-value pairs where the key is the topic and the value is the tweets
     :return:
     """
-    for topic, tweets in topcis_tweets.items():
+    for topic, tweets in tweets_by_topic.items():
             tweets_collection.update_one(
                 {"topic": topic},
                 {"$addToSet": {"tweets": {"$each": tweets}}},
@@ -66,7 +66,16 @@ def get_tweets(topics: Union[List[str], str]) -> Dict[str, List[str]]:
     """
     if isinstance(topics, str):
         topics = [topics]
-    return {topic: tweets_collection.find_one({"topic": topic}).get('tweets') for topic in topics}
+
+    tweets_dict = {}
+    for topic in topics:
+        result = tweets_collection.find_one({"topic": topic})
+        tweets = result.get('tweets') if result else []
+        tweets_dict[topic] = tweets
+
+    return tweets_dict
+    # fix this method to work with none result for the find_one method????
+
 
 
 def get_all_topics() -> List[str]:

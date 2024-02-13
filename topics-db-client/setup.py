@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='db_utils',
-    version='0.1.6',
+    version='0.1.7',
     packages=find_packages(),
     description='A package which include all the utils regarding the db',
     author='Amit Rechavia',

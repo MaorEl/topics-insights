@@ -3,14 +3,14 @@ import json
 import requests
 
 
-class IngestorRepository:
+class TwitterGatewayRepository:
 
     __instance = None
     url = 'http://localhost:5000/twitter-gateway'
 
     def __new__(cls):
         if cls.__instance is None:
-            cls.__instance = super(IngestorRepository, cls).__new__(cls)
+            cls.__instance = super(TwitterGatewayRepository, cls).__new__(cls)
             return cls.__instance
         else:
             return cls.__instance
