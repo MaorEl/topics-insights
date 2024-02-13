@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask API Documentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Topics Insights API Documentation</h1>
+<h3>Created by Amit Rechavia & Maor Elfassy</h3>
+
+<h2>Endpoint: /signUp</h2>
+<p>Sign up a new user with the given topics.</p>
+<p>Example: <code>/signUp?user_id=my_user_id&amp;topics=topic1,topic2,topic3</code></p>
+
+<h2>Endpoint: /analyze</h2>
+<p>Analyze the excitement level of people according to the tweets for a given topic.</p>
+<p>Example: <code>/analyze?topic=topic_name</code></p>
+
+<h2>Endpoint: /visualize</h2>
+<p>Visualize the level of excitement for the tweets of a given topic.</p>
+<p>Example: <code>/visualize?topic=topic_name</code></p>
+<p>If you want to see the graph in your machine, save the returned values as a variable named 'data' and run the following code:</p>
+<pre>
+<code>
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame(json.loads(data))
+plt.plot(df['X'], df['Y'])
+plt.xlabel('tweet number')
+plt.ylabel('insight satisfaction')
+plt.title('tweet to satisfaction graph')
+plt.grid(True)
+plt.show()
+</code>
+</pre>
+
+<h2>Endpoint: /</h2>
+<p>Documentation</p>
+<p>Available functionalities:</p>
+<ul>
+    <li><code>/signUp?user_id=my_user_id&amp;topics=topic1,topic2,topic3</code>: Sign up a new user with the given topics.</li>
+    <li><code>/analyze?topic=topic_name</code>: Analyze the excitement level of people according to the tweets for a given topic.</li>
+    <li><code>/visualize?topic=topic_name</code>: Visualize the level of excitement for the tweets of a given topic.</li>
+</ul>
+
+</body>
+</html>

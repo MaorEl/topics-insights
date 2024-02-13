@@ -1,4 +1,6 @@
-from flask import Flask, request
+import os
+
+from flask import Flask, request, render_template
 from core_handler import *
 app = Flask(__name__)
 
@@ -7,10 +9,10 @@ app = Flask(__name__)
 def handle_value_error(e):
     return f'Error occurred: {str(e)}', 500
 
-
 @app.route('/')
-def hello_world():  # put application's code here
-    return 'I am the main page of the Topics insight product! My API docs: <Todo maor>'
+def docs():
+
+    return render_template('docs.html')
 
 
 @app.route('/signUp')

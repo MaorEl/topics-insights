@@ -19,6 +19,11 @@ scheduler.add_job(ingest_tweets, 'interval', seconds=300)
 scheduler.start()
 
 
+@app.errorhandler(ValueError)
+def handle_value_error(e):
+    return f'Error occurred: {str(e)}', 500
+
+
 @app.route('/')
 def hello_world():
     return 'I am topics ingestor and I will ingest more tweets for all of our customers every 5 minutes!'
