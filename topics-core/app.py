@@ -10,7 +10,7 @@ matplotlib.use('TkAgg')
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import os
-openai.api_key = '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'
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 app = Flask(__name__)
 
 
