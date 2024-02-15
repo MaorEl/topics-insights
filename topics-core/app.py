@@ -70,10 +70,8 @@ def analyze():
         temperature=0.0).choices[0].message.content
     rate = _find_number_from_text(content)
     mongo_client.save_tweet_rate(topic, rate)
-    str_tweets_for_topic = '\n'.join(tweets_for_topic)
-    return (f"we asked what chat-gpt thinks about the tweets: \n " 
-           f"{str_tweets_for_topic}\n"  
-           f" it answered: {content}")
+    str_tweets_for_topic = '  \n'.join(tweets_for_topic)
+    return '  \n'.join(['we asked what chat-gpt thinks about the tweets:', str_tweets_for_topic, f'it answered: {content}'])
 
 
 @app.route('/visualize')
