@@ -63,13 +63,17 @@ def analyze():
     if not tweets_for_topic:
         return f"No tweets for topic {topic}"
 
-    prompt = f"Give a number between 1 and 10 to describe the excitement level of people according to the tweets {tweets_for_topic}. Please return only a number and nothing else."
-    rate = _find_number_from_text(openai.chat.completions.create(
+    prompt = f"Give a number between 1 and 10 to describe the excitement level of people according to the tweets {tweets_for_topic}"
+    content = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
-        temperature=0.0).choices[0].message.content)
+        temperature=0.0).choices[0].message.content
+    rate = _find_number_from_text(content)
     mongo_client.save_tweet_rate(topic, rate)
-    return f"The level of excitement in the tweets {tweets_for_topic} is {rate}"
+    str_tweets_for_topic = '\n'.join(tweets_for_topic)
+    return (f"we asked what chat-gpt thinks about the tweets: \n " 
+           f"{str_tweets_for_topic}\n"  
+           f" it answered: {content}")
 
 
 @app.route('/visualize')
