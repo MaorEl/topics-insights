@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topics-twitter-gateway
+  labels:
+    app: topics-twitter-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: topics-twitter-gateway
+  template:
+    metadata:
+      name: topics-twitter-gateway
+      labels:
+        app: topics-twitter-gateway
+    spec:
+      containers:
+        - name: topics-twitter-gateway
+          image: maorel/topics-twitter-gateway:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: twitter-gateway-service
+spec:
+  selector:
+    app: topics-twitter-gateway
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP

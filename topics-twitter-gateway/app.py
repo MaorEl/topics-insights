@@ -15,6 +15,11 @@ def handle_value_error(e):
     return f'Error occurred: {str(e)}', 500
 
 
+@app.route('/')
+def home():
+    return 'Topic Twitter Gateway API is up and running!'
+
+
 @app.route('/twitter-gateway/search/<topic>', methods=['GET'])
 def search(topic):
     logging.info(f'Searching for tweets about: {topic}')
