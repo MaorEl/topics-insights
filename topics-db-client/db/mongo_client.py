@@ -8,7 +8,6 @@ MONGO_USERNAME = os.environ.get('DB_USERNAME')
 MONGO_PASSWORD = os.environ.get('DB_PASSWORD')
 
 MONGO_HOST = f'mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@{MONGO_HOST}/?retryWrites=true&w=majority'
-MONGO_HOST = "mongodb+srv://amitrechavia:ThisIsNotMyPassword@clusterforbigdatacourse.l0dbxko.mongodb.net/?retryWrites=true&w=majority"
 client = pymongo.MongoClient(MONGO_HOST)
 db = client['db']
 tweets_collection = db['tweets']
