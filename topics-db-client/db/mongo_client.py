@@ -1,8 +1,13 @@
+import os
+
 import pymongo
 from typing import List, Dict, Union
 from itertools import chain
+MONGO_HOST = os.environ.get('DB_HOST')
+MONGO_USERNAME = os.environ.get('DB_USERNAME')
+MONGO_PASSWORD = os.environ.get('DB_PASSWORD')
 
-MONGO_HOST = "mongodb+srv://amitrechavia:ThisIsNotMyPassword@clusterforbigdatacourse.l0dbxko.mongodb.net/?retryWrites=true&w=majority"
+MONGO_HOST = f'mongodb+srv://{MONGO_USERNAME}:{MONGO_PASSWORD}@{MONGO_HOST}/?retryWrites=true&w=majority'
 client = pymongo.MongoClient(MONGO_HOST)
 db = client['db']
 tweets_collection = db['tweets']
