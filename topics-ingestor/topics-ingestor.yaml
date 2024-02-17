@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topics-ingestor
+  labels:
+    app: topics-ingestor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topics-ingestor
+  template:
+    metadata:
+      name: topics-ingestor
+      labels:
+        app: topics-ingestor
+    spec:
+      containers:
+        - name: topics-ingestor
+          image: maorel/topics-ingestor:1.0.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 1234
+          env:
+            - name: TWITTER_GATEWAY_HOST
+              value: "http://twitter-gateway-service:5000"
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: mongo-url
+                  name: mongo-config
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: mongo-user
+                  name: mongo-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mongo-password
+                  name: mongo-secret
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: topics-ingestor-service
+spec:
+  selector:
+    app: topics-ingestor
+  ports:
+    - protocol: TCP
+      port: 1234
+      targetPort: 1234
+  type: LoadBalancer
