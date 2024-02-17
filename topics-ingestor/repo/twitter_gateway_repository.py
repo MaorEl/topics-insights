@@ -1,12 +1,18 @@
 import json
+import logging
+import os
 
 import requests
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class TwitterGatewayRepository:
 
     __instance = None
-    url = 'http://localhost:5000/twitter-gateway'
+    TWITTER_GATEWAY_HOST = os.environ.get('TWITTER_GATEWAY_HOST')
+    url = f'{TWITTER_GATEWAY_HOST}/twitter-gateway'
+    logging.info(f'URL is: {url}')
 
     def __new__(cls):
         if cls.__instance is None:

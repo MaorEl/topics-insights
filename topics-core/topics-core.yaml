@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topics-core
+  labels:
+    app: topics-core
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: topics-core
+  template:
+    metadata:
+      name: topics-core
+      labels:
+        app: topics-core
+    spec:
+      containers:
+        - name: topics-core
+          image: maorel/topics-core:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: mongo-url
+                  name: mongo-config
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: mongo-user
+                  name: mongo-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mongo-password
+                  name: mongo-secret
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: topics-core-service
+spec:
+  selector:
+    app: topics-core
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
