@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: topics-twitter-gateway
-          image: maorel/topics-twitter-gateway:1.0.0
+          image: maorel/topics-twitter-gateway:1.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
@@ -29,10 +29,11 @@ kind: Service
 metadata:
   name: twitter-gateway-service
 spec:
+  type: ClusterIP
   selector:
     app: topics-twitter-gateway
   ports:
     - protocol: TCP
       port: 5000
       targetPort: 5000
-  type: ClusterIP
+

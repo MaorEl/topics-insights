@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: services-config
+data:
+  twitter_gateway: "http://twitter-gateway-service:5000"
+  core: "http://topics-core-service:8080"
+  

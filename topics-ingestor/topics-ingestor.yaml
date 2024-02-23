@@ -23,7 +23,10 @@ spec:
             - containerPort: 1234
           env:
             - name: TWITTER_GATEWAY_HOST
-              value: "http://twitter-gateway-service:5000"
+              valueFrom:
+                configMapKeyRef:
+                  key: twitter_gateway
+                  name: services-config
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
@@ -53,4 +56,4 @@ spec:
     - protocol: TCP
       port: 1234
       targetPort: 1234
-  type: LoadBalancer
+  type: ClusterIP

@@ -5,16 +5,16 @@ import requests
 logging.basicConfig(level=logging.DEBUG)
 
 
-class CoreRepository:
+class ApiRepository:
 
     __instance = None
-    TOPICS_CORE_HOST = os.environ.get('TOPICS_CORE_HOST')
-    url = f'{TOPICS_CORE_HOST}'
+    TOPICS_API_HOST = os.environ.get('TOPICS_API_HOST')
+    url = f'{TOPICS_API_HOST}'
     logging.info(f'URL is: {url}')
 
     def __new__(cls):
         if cls.__instance is None:
-            cls.__instance = super(CoreRepository, cls).__new__(cls)
+            cls.__instance = super(ApiRepository, cls).__new__(cls)
             return cls.__instance
         else:
             return cls.__instance
