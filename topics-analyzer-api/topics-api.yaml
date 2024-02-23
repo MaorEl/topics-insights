@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: topics-core
+  name: topics-api
   labels:
-    app: topics-core
+    app: topics-api
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: topics-core
+      app: topics-api
   template:
     metadata:
-      name: topics-core
+      name: topics-api
       labels:
-        app: topics-core
+        app: topics-api
     spec:
       containers:
-        - name: topics-core
-          image: maorel/topics-core:1.0.1
+        - name: topics-api
+          image: maorel/topics-api:1.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
-            - name: OPENAI_API_KEY
+            - name: TOPICS_CORE_HOST
               valueFrom:
-                secretKeyRef:
-                  key: open-ai-token
-                  name: core-secret
+                configMapKeyRef:
+                  key: core
+                  name: services-config
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
@@ -48,12 +48,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: topics-core-service
+  name: topics-api-service
 spec:
   selector:
-    app: topics-core
+    app: topics-api
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  type: LoadBalancer
+      port: 2345
+      targetPort: 2345
+      nodePort: 30001
+  type: NodePort
+

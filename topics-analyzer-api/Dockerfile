@@ -1,12 +1,17 @@
 FROM python:3.12
+LABEL authors="maore"
 
+# Set the working directory in the container
 WORKDIR /app
 
-ADD . /app
+# Copy the current directory contents into the container at /app
+COPY . /app
 
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Don't change this port - streamlit default port is 8501
-EXPOSE 8501
+# Make port 2345 available to the world outside this container
+EXPOSE 2345
 
-CMD streamlit run streamlit_app.py
+# Run app.py when the container launches
+CMD ["python", "app.py"]

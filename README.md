@@ -29,3 +29,17 @@ This microservice is responsible to read tweets from the Twitter API and send it
 ### topics-db-client
 
 This library is responsible to connect to the database and get the data from it or persist it in it. 
+
+## How to create a Kubernetes cluster with all component locally?
+
+### Prerequisites
+1. Install Docker
+2. Install Minikube (and kubectl)
+
+### Steps
+1. Start Docker Desktop
+2. Start minikube
+```minikube start```
+3. Build the relevant docker images (see in the README.md of each service)
+4. Apply the kubernetes components by using kubectl command
+```kubectl apply -f k8s```
