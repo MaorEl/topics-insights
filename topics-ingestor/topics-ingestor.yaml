@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: topics-ingestor
-          image: maorel/topics-ingestor:1.0.4
+          image: maorel/topics-ingestor:1.0.7
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 1234
@@ -26,6 +26,11 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: twitter_gateway
+                  name: services-config
+            - name: TOPICS_CORE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: core
                   name: services-config
             - name: DB_HOST
               valueFrom:
