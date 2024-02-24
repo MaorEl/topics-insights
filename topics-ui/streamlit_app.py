@@ -31,11 +31,14 @@ if submitted_analyze_result:
 
 with st.form("Visualize"):
     st.header("Visualize")
-    topic_to_visualize = st.text_input('enter a topic you want to visualize the analyzation')
+    topic_to_visualize = st.text_input('Visualize the sentiment of a topic along the time')
     submitted_visualize_result = st.form_submit_button("Submit")
 
 if submitted_visualize_result:
-    df = pd.DataFrame(json.loads(api_repository.visualize(topic_to_visualize))["y"])
-    st.write('The graph illustrates the correlation between the number of tweets (X-axis) and the corresponding level of excitement (Y-axis).')
-    st.bar_chart(data=df)
-
+    df_as_list = json.loads(api_repository.visualize(topic_to_visualize))
+    df = pd.DataFrame(df_as_list)
+    df.rename(columns={'rate': 'sentiment level'}, inplace=True)
+    print(df)
+    df['time'] = pd.to_datetime(df['time'], format='%Y-%m-%dT%H:%M:%S.%f')
+    st.dataframe(df)
+    st.bar_chart(df.set_index('time'))

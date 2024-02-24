@@ -30,7 +30,7 @@ This microservice is responsible to read tweets from the Twitter API and send it
 
 This library is responsible to connect to the database and get the data from it or persist it in it. 
 
-## How to create a Kubernetes cluster with all component locally?
+## How to create a Kubernetes cluster with all component **locally**?
 
 ### Prerequisites
 1. Install Docker
@@ -40,6 +40,24 @@ This library is responsible to connect to the database and get the data from it 
 1. Start Docker Desktop
 2. Start minikube
 ```minikube start```
-3. Build the relevant docker images (see in the README.md of each service)
-4. Apply the kubernetes components by using kubectl command
-```kubectl apply -f k8s```
+3. Create the kubernetes components by using kubectl command
+```bash
+kubectl apply -f k8s/mongo-config.yaml
+kubectl apply -f k8s/mongo-secret.yaml
+kubectl apply -f k8s/services-config.yaml
+kubectl apply -f topics-analyzer-api/topics-api.yaml
+kubectl apply -f topics-core/core-secret.yaml
+kubectl apply -f topics-core/topics-core.yaml
+kubectl apply -f topics-ingestor/topics-ingestor.yaml
+kubectl apply -f topics-twitter-gateway/twitter-gateway.yaml
+```
+4. Verify all pods are running
+```bash
+kubectl get pods
+```
+
+5. Run the UI locally if needed:
+```bash
+cd topics-ui
+TOPICS_API_HOST=http://localhost:2345 streamlit run streamlit_app.py
+```
