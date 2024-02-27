@@ -56,6 +56,5 @@ spec:
     - protocol: TCP
       port: 2345
       targetPort: 2345
-      nodePort: 30001
-  type: NodePort
+  type: LoadBalancer
 
