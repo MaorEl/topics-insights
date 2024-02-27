@@ -1,4 +1,5 @@
 # topics-insights
+![Topics insights logo](topics-ui/twitter-analytics.jpg)
 
 Application to get the most recent insights about your topics of interest.
 This repository contains all the services to run the application.
@@ -84,9 +85,4 @@ This library is responsible to connect to the database and get the data from it 
 
 ## Ingestor - Ingest Insights Flow
 ![Ingestor - Ingest Insights Flow](docs/IngestorInsights.drawio.png)
-
-
-
-
-
 
