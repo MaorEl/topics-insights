@@ -40,6 +40,8 @@ cd topics-ui
 TOPICS_API_HOST=http://localhost:2345 streamlit run streamlit_app.py
 ```
 
+### topics-ui
+This is the user interface of the application. It is responsible to get the request from the user and send it to the topics-analyzer-api to sign up, to get the insights about the topics of interest or to visualize it.
 
 ### topics-analyzer-api
 This microservice is responsible to get REST request from users and represent our external layer which is open to get network traffic from the public internet.
